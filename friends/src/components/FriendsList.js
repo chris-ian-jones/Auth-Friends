@@ -1,5 +1,5 @@
 import React from 'react'
-import axiosWithAuth from './../utils/axiosWithAuth'
+import { axiosWithAuth } from './../utils/axiosWithAuth'
 import FriendCard from './FriendCard'
 
 class FriendsList extends React.Component {
