@@ -1,11 +1,13 @@
 import React, {useState} from 'react'
+import axios from 'axios'
 
 const Login = () => {
   
   const [loginDetails, setLoginDetails] = useState({
     username: '',
-    password: ''
+    password: '',
   })
+  const [loading, setLoading] = useState(false)
 
   const handleChanges = event => {
     setLoginDetails({
@@ -13,13 +15,26 @@ const Login = () => {
     [event.target.name]: event.target.value
    })
   }
+
+  const handleLogin = event => {
+    event.preventDefault()
+    // console.log(event)
+    setLoading(true)
+    axios
+      .post('http://localhost:5000/api/login', loginDetails)
+      .then(result => {
+        localStorage.setItem('token', result.data.payload)
+      })
+      .catch(error => console.log(error.response))
+  }
   
   console.log(loginDetails)
   return (
-    <form>
+    <form onSubmit={handleLogin}>
       <input name='username' value={loginDetails.username} onChange={handleChanges} placeholder='Username'/>
       <input name='password' value={loginDetails.password} onChange={handleChanges} placeholder='Password' type='password'/>
-      <button>Sign in</button>
+      <button onClick={handleLogin}>Sign in</button>
+      {loading ? <p>loading...</p> : ''}
     </form>
   )
 }
