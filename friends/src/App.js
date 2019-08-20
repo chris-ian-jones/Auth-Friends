@@ -16,12 +16,13 @@ function App() {
         <Link to='/login'>Login</Link>
         <br/>
         <Link to='/friendslist'>Friends List</Link>
+        <br/>
+        <Link to='/addfriend'>Add Friend</Link>
         {/* {localStorage.getItem('token') ? <Link to='/friendslist'>Friends List</Link> : ''} */}
 
         <Route path='/login' component={Login} />
         <PrivateRoute exact path='/friendslist' component={FriendsList} />
-
-        <AddFriend />
+        <PrivateRoute exact path='/addfriend' component={AddFriend} />
       </div>
     </Router>
   )

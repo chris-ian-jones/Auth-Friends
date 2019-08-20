@@ -9,7 +9,6 @@ class FriendsList extends React.Component {
 
   componentDidMount() {
     this.getData()
-    
   }
 
   getData =() => {
@@ -27,7 +26,7 @@ class FriendsList extends React.Component {
     console.log('Render - state: ', this.state)
     return (
       <>
-      {this.state.friendsListArray.map(friend => <FriendCard key={friend.email} name={friend.name} age={friend.age} email={friend.email} />)}
+        {this.state.friendsListArray.map(friend => <FriendCard key={friend.email} name={friend.name} age={friend.age} email={friend.email} />)}
       </>
     )
   }
