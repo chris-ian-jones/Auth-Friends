@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 
-const Login = () => {
+const Login = (props) => {
   
   const [loginDetails, setLoginDetails] = useState({
     username: '',
@@ -24,6 +24,7 @@ const Login = () => {
       .post('http://localhost:5000/api/login', loginDetails)
       .then(result => {
         localStorage.setItem('token', result.data.payload)
+        props.history.push("/friendslist");
       })
       .catch(error => console.log(error.response))
   }
