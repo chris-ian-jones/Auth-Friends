@@ -14,6 +14,7 @@ const FriendCard = props => {
       .then(result => console.log(result))
       .catch(error => console.log(error))
   }
+
   return (
     <StyledContainer>
       <p>Name: {props.name}</p>

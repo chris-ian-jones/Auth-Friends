@@ -7,10 +7,6 @@ class FriendsList extends React.Component {
     friendsListArray: []
   }
 
-  componentDidMount() {
-    this.getData()
-  }
-
   getData =() => {
     axiosWithAuth()
       .get('http://localhost:5000/api/friends')
@@ -22,11 +18,23 @@ class FriendsList extends React.Component {
       })
   }
 
+  componentDidMount() {
+    this.getData()
+  }
+
   render() {
     console.log('Render - state: ', this.state)
     return (
       <>
-        {this.state.friendsListArray.map(friend => <FriendCard key={friend.id} name={friend.name} age={friend.age} email={friend.email} id={friend.id} />)}
+        {this.state.friendsListArray.map(friend => 
+          <FriendCard 
+            key={friend.id} 
+            name={friend.name} 
+            age={friend.age} 
+            email={friend.email} 
+            id={friend.id} 
+          />)
+        }
       </>
     )
   }
