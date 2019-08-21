@@ -7,11 +7,10 @@ class FriendsList extends React.Component {
     friendsListArray: []
   }
 
-  getData =() => {
+  getData = () => {
     axiosWithAuth()
       .get('http://localhost:5000/api/friends')
       .then(result => {
-        console.log(result.data)
         this.setState({
           friendsListArray: result.data
         })
@@ -23,7 +22,6 @@ class FriendsList extends React.Component {
   }
 
   render() {
-    console.log('Render - state: ', this.state)
     return (
       <>
         {this.state.friendsListArray.map(friend => 

@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
+
 import { axiosWithAuth } from './../utils/axiosWithAuth'
-import { Redirect } from 'react-router';
-import FriendsList from './FriendsList';
 
 const StyledContainer = styled.div`
   border: 1px solid gray;
 `
+
 const FriendCardEditDelete = props => {
-  const [userData, setUserData] = useState({
-  })
+  const [userData, setUserData] = useState({})
   
   const [newUserData, setNewUserData] = useState({
     name: '',
@@ -17,7 +16,6 @@ const FriendCardEditDelete = props => {
     email: ''
   })
   
-  console.log('newUserData: ', newUserData)
   const friendId = props.match.params.id
 
   useEffect(() => {
@@ -38,15 +36,14 @@ const FriendCardEditDelete = props => {
     axiosWithAuth()
       .put(`http://localhost:5000/api/friends/${friendId}`, newUserData)
       .then(result => props.history.push("/friendslist"))
-
       .catch(error => console.log(error))
   }
 
   const handleChanges = event => {
     setNewUserData({
-    ...newUserData,
-    [event.target.name]: event.target.value
-   })
+      ...newUserData,
+      [event.target.name]: event.target.value
+    })
   }
 
   return (
@@ -59,7 +56,7 @@ const FriendCardEditDelete = props => {
         <input name='name' value={newUserData.name} onChange={handleChanges} />
         <input name='age' value={newUserData.age} onChange={handleChanges} />
         <input name='email' value={newUserData.email} onChange={handleChanges} />
-        <button>Edit</button>
+        <button onClick={editFriend}>Edit</button>
       </form>
     </StyledContainer>
   )

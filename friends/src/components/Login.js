@@ -2,23 +2,22 @@ import React, {useState} from 'react'
 import axios from 'axios'
 
 const Login = (props) => {
-  
   const [loginDetails, setLoginDetails] = useState({
     username: '',
     password: '',
   })
+
   const [loading, setLoading] = useState(false)
 
   const handleChanges = event => {
     setLoginDetails({
-    ...loginDetails,
-    [event.target.name]: event.target.value
+      ...loginDetails,
+      [event.target.name]: event.target.value
    })
   }
 
   const handleLogin = event => {
     event.preventDefault()
-    // console.log(event)
     setLoading(true)
     axios
       .post('http://localhost:5000/api/login', loginDetails)
@@ -29,7 +28,6 @@ const Login = (props) => {
       .catch(error => console.log(error.response))
   }
   
-  console.log(loginDetails)
   return (
     <form onSubmit={handleLogin}>
       <input name='username' value={loginDetails.username} onChange={handleChanges} placeholder='Username'/>

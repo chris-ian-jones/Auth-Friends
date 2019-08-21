@@ -26,7 +26,6 @@ class AddFriend extends React.Component {
     axiosWithAuth()
       .post('http://localhost:5000/api/friends', this.state.newFriendData)
       .then(result => {
-        console.log('api add friend success, result: ', result)
         this.setState({
           newFriendData: {
             id: '',
@@ -41,9 +40,7 @@ class AddFriend extends React.Component {
   }
 
   render() {
-    console.log('AddFriend render - state: ', this.state.newFriendData)
     return (
-      <>
         <form onSubmit={this.onSubmitHandler}>
           <input name='name' placeholder='Name' value={this.state.newFriendData.name} onChange={this.onChangeHandler} />
           <input name='age' placeholder='Age' value={this.state.newFriendData.age} onChange={this.onChangeHandler} />
@@ -51,7 +48,6 @@ class AddFriend extends React.Component {
           <button onClick={this.onSubmitHandler}>Add New Friend</button>
           {this.state.successMessage ? <p>New friend added!</p> : ''}
         </form>
-      </>
     )
   }
 }

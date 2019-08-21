@@ -6,20 +6,17 @@ import FriendsList from './components/FriendsList'
 import PrivateRoute from './components/PrivateRoute'
 import FriendCardEditDelete from './components/FriendCardEditDelete'
 
-
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 function App(props) {
   return (
     <Router>
       <div className="App">
-        {/* {localStorage.getItem('token') ? '' : <Link to='/login'>Login</Link>} */}
         <Link to='/login'>Login</Link>
         <br/>
         <Link to='/friendslist'>Friends List</Link>
         <br/>
         <Link to='/addfriend'>Add Friend</Link>
-        {/* {localStorage.getItem('token') ? <Link to='/friendslist'>Friends List</Link> : ''} */}
 
         <Route path='/login' component={Login} />
         <PrivateRoute exact path='/friendslist' component={FriendsList} />
