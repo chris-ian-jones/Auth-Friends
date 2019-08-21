@@ -4,10 +4,11 @@ import Login from './components/Login'
 import AddFriend from './components/AddFriend'
 import FriendsList from './components/FriendsList'
 import PrivateRoute from './components/PrivateRoute'
-import FriendCardEditDelete from './components/FriendCardEditDelete'
+import FriendCardEdit from './components/FriendCardEdit'
 
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
+// setup routes, but have to manually type in url with friends id to edit, eg /friends/2
 function App(props) {
   return (
     <Router>
@@ -22,7 +23,7 @@ function App(props) {
         <PrivateRoute exact path='/friendslist' component={FriendsList} />
         <PrivateRoute exact path='/addfriend' component={AddFriend} />
         <Route path='/friends/:id' 
-          render={props => <FriendCardEditDelete {...props} />}
+          render={props => <FriendCardEdit {...props} />}
         />
       </div>
     </Router>

@@ -7,6 +7,8 @@ class FriendsList extends React.Component {
     friendsListArray: []
   }
 
+  // function to grab array of friends data using authenticated header in api call,
+  // function executes only when component mounts
   getData = () => {
     axiosWithAuth()
       .get('http://localhost:5000/api/friends')

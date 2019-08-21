@@ -21,6 +21,7 @@ class AddFriend extends React.Component {
     })
   }
 
+  // handler to add new friend via post request, using data from state of controlled form inputs
   onSubmitHandler = event => {
     event.preventDefault()
     axiosWithAuth()

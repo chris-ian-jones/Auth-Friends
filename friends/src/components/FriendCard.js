@@ -10,6 +10,7 @@ const StyledContainer = styled.div`
 
 const FriendCard = props => {
   
+  // delete friend function, using axios call with authenticated header, using the id of the friend to access the delete endpoint
   const deleteFriend = () => {
     axiosWithAuth()
       .delete(`http://localhost:5000/api/friends/${props.id}`)
